@@ -1,0 +1,46 @@
+{
+  "name": "bb-plugin-account-usage",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Every pooled Claude and Codex account, with its next reset, in one sidebar card.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dillionverma/bb-plugin-account-usage.git"
+  },
+  "keywords": [
+    "bb-plugin"
+  ],
+  "engines": {
+    "bb": ">=0.43",
+    "bbPluginSdk": ">=0.4.87"
+  },
+  "bb": {
+    "name": "Account usage",
+    "description": "All Claude and Codex accounts and their next reset, in one card.",
+    "branding": {
+      "icon": "ChartColumn"
+    },
+    "server": "./src/server.ts",
+    "app": "./src/app.tsx"
+  },
+  "scripts": {
+    "build": "bb plugin build .",
+    "dev": "bb plugin dev .",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.4.87",
+    "@radix-ui/react-tooltip": "^1.2.12",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.1"
+  }
+}

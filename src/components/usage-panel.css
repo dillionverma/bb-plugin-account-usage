@@ -1,0 +1,48 @@
+/* Match Ultra Sidebar's neutral, two-second title shimmer. */
+@keyframes bb-account-usage-shimmer {
+  from { background-position: 200% 50%; }
+  to { background-position: -200% 50%; }
+}
+
+.bb-account-usage-serving {
+  background-image: linear-gradient(to right, color-mix(in srgb, var(--foreground) 45%, transparent) 30%, var(--foreground) 50%, color-mix(in srgb, var(--foreground) 45%, transparent) 70%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: bb-account-usage-shimmer 2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-account-usage-serving {
+    animation: none;
+    background-image: none;
+    color: var(--sidebar-foreground);
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.bb-account-usage-bar-serving {
+  background-image: linear-gradient(to right, transparent 30%, rgb(255 255 255 / 45%) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: bb-account-usage-shimmer 2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-account-usage-bar-serving {
+    animation: none;
+    background-image: none;
+  }
+}
+
+/* In the rail layout the panel mounts above the footer body's full-height icon
+ * row. Let that row size to its content so the panel doesn't push it offscreen. */
+[data-sidebar="collapsible-body"] > [data-account-usage-mount] + * {
+  height: auto;
+}
+
+/* Keep the rail's settings button level with the footer row, not centred on the panel. */
+:has(+ [data-sidebar="collapsible-body"] > [data-account-usage-mount]) {
+  align-self: end;
+}
