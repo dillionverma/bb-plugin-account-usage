@@ -36,6 +36,12 @@
   }
 }
 
+/* On a phone the closed sidebar stays in the page, covered by the thread.
+ * A background-position shimmer repaints every frame even there, so stop it. */
+[data-sidebar="panel"][data-state="closed"] :is(.bb-account-usage-serving, .bb-account-usage-bar-serving) {
+  animation: none;
+}
+
 /* In the rail layout the panel mounts above the footer body's full-height icon
  * row. Let that row size to its content so the panel doesn't push it offscreen. */
 [data-sidebar="collapsible-body"] > [data-account-usage-mount] + * {
